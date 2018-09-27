@@ -35,7 +35,29 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 if self.path == "/testing.html?":
                         self.make_testing()
 			self.path = "/testing.html"
-		
+		if self.path == "/authpicup.html?":
+			self.path = "/authpicup.html"
+		if self.path == "/authper.html?":
+			self.path = "/authper.html"
+		if self.path == "/authpicDB.html?":
+			self.path = "/authpicDB.html"
+		if self.path == "/picDB.html?":
+			self.path = "/picDB.html"
+		if self.path == "/authUPDB.html?":
+			self.path = "/authUPDB.html"
+                if self.path == "/UPDB.html?":
+			self.path = "/UPDB.html"
+		if self.path == "/authCIDB.html?":
+			self.path = "/authCIDB.html"
+		if self.path == "/CIDB.html?":
+			self.path = "/CIDB.html"
+		if self.path == "/printReports.html?":
+			self.path = "/printReports.html"
+		if self.path == "/authPrint.html?":
+			self.path = "/authPrint.html"
+			
+			
+
 		try:
 			sendReply = False
 			if self.path.endswith(".html"):
