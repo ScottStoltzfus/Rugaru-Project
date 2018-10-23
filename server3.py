@@ -55,6 +55,8 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 			self.path = "/printReports.html"
 		if self.path == "/authPrint.html?":
 			self.path = "/authPrint.html"
+		if self.path == "/inputform2.html?":
+			self.path = "/inputform2.html"
 			
 			
 
@@ -79,6 +81,8 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
 	# handler for POST requests
 	def do_POST(self):
+                checkID = "1"
+                checkPass = "S117"
 		global led_state, LEDPIN
 		print "In do_POST()"
 		if self.path == "/send":
@@ -90,14 +94,24 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 					"CONTENT_TYPE":self.headers["Content-Type"],
 			})
 
-			if form["command"].value == "LED":
+			"""if form["command"].value == "LED":
                                 print "LED was pushed"
                                 self.path = "/pupload.html"
-                                self.do_GET()
-			elif form["command"].value == "Blink":
+                                self.do_GET()"""
+                        if form.getvalue('empID') == checkID:
+                                print "ID was right"
+                                if form.getvalue('pass') == checkPass:
+                                        print "pass was right"
+                                        self.path = "/pupload.html"
+                                        self.do_GET()
+                                else:
+                                        print "pass was wrong"
+                                        self.path = "/mainmenu.html"
+                                        self.do_GET()
+			"""elif form["command"].value == "Blink":
                                 print "Blink was pushed"
                                 self.path = "/mainmenu.html"
-                                self.do_GET()
+                                self.do_GET()"""
 			
 			return
 
